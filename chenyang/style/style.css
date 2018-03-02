@@ -1,0 +1,13 @@
+html, body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.content {
+	width: 80%;
+	min-height: 20%;
+	border: 1px solid #eeff00;
+	margin: 50px auto;
+
+}
