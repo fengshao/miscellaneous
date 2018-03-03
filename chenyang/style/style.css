@@ -2,12 +2,227 @@ html, body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000000;
 }
 
-.content {
-	width: 80%;
-	min-height: 20%;
-	border: 1px solid #eeff00;
-	margin: 50px auto;
+div {
+	cursor: default;
+}
 
+/*展示区域样式*/
+.ad-container {
+	position: relative;
+	min-width: 80%;
+	min-height: 20%;
+	height: calc(100% - 100px); /* 100  为 上下边距 之和 确保 展示区域始终在浏览器内 使浏览器自身没有滚动条  使用展示区域div 的滚动条*/
+	margin: 50px 50px;
+	overflow: hidden;
+
+}
+
+.title-content {
+	width: 100%;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.ping-title {
+	float: left;
+	width: 66px;
+	text-align: center;
+}
+
+.date-title {
+	padding-left: 10px;
+	float: left;
+}
+
+.ad-container .date-title .day-cls:nth-child(1) {
+	margin-left: 0;
+}
+
+/*屏幕编号区域样式 start*/
+.ad-container .ping-num-content {
+	height: calc(100% - 20px); /* 20 为 底部滚动条高度 */
+	width: 66px;
+	text-align: center;
+	z-index: 99;
+	float: left;
+	overflow: hidden;
+}
+
+.ad-container .ping-num-content .bg-up-ping-num {
+	width: 100%;
+	text-align: center;
+	z-index: 99;
+	float: left;
+}
+
+.ad-container .ping-num-content .ping-num-cls {
+	height: 40px;
+	line-height: 40px;
+}
+
+/*屏幕编号区域样式 end */
+
+/* 时间轴 区域样式 start */
+.ad-container .time-line-container {
+	width: calc(100% - 66px); /* 50  减掉左侧 屏幕编号 宽度 */
+	overflow: hidden;
+	display: none;
+}
+
+.ad-container .time-line-content {
+	width: calc(43px * 90); /* 43  一个日期div 的宽度 90 总计90天*/
+}
+
+.ad-container .time-line {
+	display: inline-block;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.ad-container .time-line-1 {
+	width: calc(43px * 1);
+}
+
+.ad-container .time-line-30 {
+	width: calc(43px * 29);
+}
+
+.ad-container .time-line-60 {
+	width: calc(43px * 30);
+}
+
+.ad-container .time-line-90 {
+	width: calc(43px * 30);
+}
+
+/* 时间轴 区域样式 end */
+
+/*日期区域样式 start */
+.ad-container .content {
+	position: relative;
+	width: calc(100% - 66px); /* 50  减掉左侧 屏幕编号 宽度 */
+	height: calc(100% - 30px);
+	overflow: scroll;
+}
+
+.ad-container .content .day-content {
+	width: calc(43px * 90 + 10px); /* 43  一个日期div 的宽度 90 总计90天*/
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+.ad-container .day-cls {
+	display: inline-block;
+	width: 38px;
+	text-align: center;
+	margin-left: 5px;
+	min-width: 10px;
+	padding: 3px 0;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-color: #FF0000;
+	border-radius: 10px;
+	height: 18px;
+
+}
+
+.ad-container .content .day-cls:first-child {
+	margin-left: 0;
+}
+
+.ad-container .no-ad {
+	background-color: #FF0000;
+}
+
+.ad-container .is-checked-ad {
+	background-color: #008000;
+
+}
+
+.ad-container .no-checked-ad {
+	background-color: #FFFF00;
+	color: #927171;
+}
+
+/*日期区域样式 end */
+
+.ad-container .content .is-checked-ad,.ad-container .content .no-checked-ad {
+	animation-duration: 1s;
+	animation-timing-function: ease;
+	animation-iteration-count: infinite;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.ad-container .content .bounce-down-cls {
+	animation-name: bounce-down;
+	-webkit-animation-name: bounce-down;
+}
+
+.ad-container .content .bounce-up-cls {
+	animation-name: bounce-up;
+	-webkit-animation-name: bounce-up;
+}
+
+@-webkit-keyframes bounce-down {
+	25% {
+		-webkit-transform: translateY(-2px);
+	}
+	50%, 100% {
+		-webkit-transform: translateY(0);
+	}
+	75% {
+		-webkit-transform: translateY(2px);
+	}
+}
+
+@keyframes bounce-down {
+	25% {
+		transform: translateY(-2px);
+	}
+	50%, 100% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(2px);
+	}
+}
+
+@-webkit-keyframes bounce-up {
+	25% {
+		-webkit-transform: translateY(2px);
+	}
+	50%, 100% {
+		-webkit-transform: translateY(0);
+	}
+	75% {
+		-webkit-transform: translateY(-2px);
+	}
+}
+
+@keyframes bounce-up {
+	25% {
+		transform: translateY(2px);
+	}
+	50%, 100% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-2px);
+	}
 }
